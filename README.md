@@ -35,7 +35,8 @@ The config.txt is used to guide the mutagensis and is organzied in trhee columns
 1) `3 letter amino acid` 
 2) `residue number`
 3) `comma seprated list of amino acids to mutate to or * for all`
-if config.txt is not empty you will be prompted to select from the interface positions. 
+
+If config.txt is  empty you will be prompted to select from the interface positions. 
 
 ### Command line Arguments:
 * `-pdb`: RCSB PDB id, if not provided you will be prompted to select one. If it is is in the input/ folder it will be used. Otherwise it will be downloaded from the RCSB.
