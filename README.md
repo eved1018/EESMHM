@@ -1,6 +1,6 @@
 ### Energy Evaluation of Single Mutant Homology Models:
 
-<img src="Media/Picture1.png"  width="400" height="400"/>
+<img src="Media/Picture1.png"  width="400" height="400" align="center"/>
 
 ### Installation and Dependencies:
 1. Clone repo:
