@@ -1,0 +1,11 @@
+FoldX 4 (2011)
+by the FoldX Consortium 
+Jesper Borg, Frederic Rousseau, Joost Schymkowitz,
+Luis Serrano and Francois Stricher
+------------------------------------------------------
+
+PDB file analysed: batch
+Output type: AnalyseComplex
+List of Residues at the interface: output/6waq/mutants/TRP53S.pdb
+interface residues between A and B
+TA50	SA52	SA53	SA54	SA57	TA58	YA59	YA60	TA61	DA62	TA103	VA104	VA105	SA106	EA107	WA108	YA110	DA111	YB356	NB357	SB358	TB359	FB361	SB362	TB363	FB364	KB365	CB366	YB367	AB371	TB372	DB392	VB394	RB395	NB424	RB426	IB489	YB494	
