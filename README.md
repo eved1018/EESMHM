@@ -1,5 +1,5 @@
 ### Energy Evaluation of Single Mutant Homology Models:
-![photo](Media/picture1.png)
+![photo](Media/Picture1.png)
 ### Installation and Dependencies:
 1. Clone repo:
 ```sh
