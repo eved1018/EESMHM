@@ -7,7 +7,7 @@
 ### Installation and Dependencies:
 1. Clone repo:
 ```sh
-   git clone https://github.com/eved1018/InterfaceExtention
+   git clone https://github.com/eved1018/EESMHM.git
 ```
 2. Download Modeller: https://salilab.org/modeller/download_installation.html
     * for Conda enviroment:
