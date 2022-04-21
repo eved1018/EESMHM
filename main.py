@@ -1,9 +1,7 @@
 import os
 from concurrent.futures import ProcessPoolExecutor
-from unittest import result
 import pandas as pd
 import inquirer
-
 from src.intercaat import intercaatMutant, intercaatWT
 from src.CLI import cli
 from src.mutant_model import mutateModel
