@@ -42,6 +42,3 @@ If config.txt is  empty you will be prompted to select from the interface positi
 * `-pdb`: RCSB PDB id, if not provided you will be prompted to select one. If it is is in the input/ folder it will be used. Otherwise it will be downloaded from the RCSB.
 * `-qc`: Query chain to mutate.
 * `-ic`: partner chain.
-
-### TODO:
-incorparate thermodynamic cycle 
