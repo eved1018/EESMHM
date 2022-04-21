@@ -90,3 +90,4 @@ def tooFile(filename, newMatch, newInteractionRes,newInteractions):
 
 def to_dict(newInteractionRes, newInteraction):
     return {f"{i}{l[0]}": [i,l[0],l[1]] for i, l in zip(newInteractionRes, newInteraction)}
+

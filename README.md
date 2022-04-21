@@ -16,7 +16,7 @@
         conda config --add channels salilab
         conda install modeller
 ```
-3. Download python dependencies (pyhull, scipy, numpy):
+3. Download python dependencies:
 ```sh
     pip install -r requirements.txt 
 ```
@@ -28,7 +28,7 @@
     g++ -O3 -ffast-math -o EvoEF src/*.cpp
 ```
 
-5. download foldx (https://foldxsuite.crg.eu/) and move the executable and rotobase.txt to src/foldx folder.
+5. Download foldx (https://foldxsuite.crg.eu/) and move the executable and rotobase.txt to src/foldx folder.
 
 ### Configuration File:
 The config.txt is used to guide the mutagensis and is organzied in trhee columns:
@@ -42,3 +42,6 @@ If config.txt is  empty you will be prompted to select from the interface positi
 * `-pdb`: RCSB PDB id, if not provided you will be prompted to select one. If it is is in the input/ folder it will be used. Otherwise it will be downloaded from the RCSB.
 * `-qc`: Query chain to mutate.
 * `-ic`: partner chain.
+
+### TODO:
+incorparate thermodynamic cycle 
