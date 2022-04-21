@@ -5,9 +5,8 @@ import inquirer
 from src.intercaat import intercaatMutant, intercaatWT
 from src.CLI import cli
 from src.mutant_model import mutateModel
-from src.energy_eval import EvoEF_run, Foldx_run
+from src.energy_eval import EvoEF_run, Foldx_run, GBSA
 from src.input_parser import inputParser
-
 
 
 def main(pdb, pdb_file, qc, ic, config):
@@ -18,12 +17,12 @@ def main(pdb, pdb_file, qc, ic, config):
 
     os.makedirs(f"output/{pdb}/mutants/", exist_ok=True)
     os.makedirs(f"tmp/", exist_ok=True)
-
     #wildtype analysis:
     intercaat_wt_scores : dict = {} # {position: [intercaat_wt_score]}
     intercaat_result = intercaatWT(pdb_file, qc, ic)
     evo_wt_score = EvoEF_run("input/"+pdb_file, qc, ic)
     foldx_wt_score = Foldx_run(pdb_file, qc, ic, "input/")
+    wt_gbsa   = GBSA("input/" + pdb_file, qc, ic )
     mutant_folder = f"output/{pdb}/mutants/"
 
     positions_and_mutations = configManager(config, intercaat_result)
@@ -45,7 +44,7 @@ def main(pdb, pdb_file, qc, ic, config):
             mutantfile =  mutant_folder + wt_AA + mutposition + ".pdb"
             mutantfile = mutateModel(pdb_file, respos, mutantAA_3letter, qc, mutantfile, "input/")
             mutant_name = wt_AA + respos + mutantAA
-            jobs.append([position, mutant_name, wt_AA,respos, mutantfile,foldx_wt_score, evo_wt_score,intercaat_wt_scores, mutant_folder, qc, ic, mutantAA_3letter, pdb_file])
+            jobs.append([position, mutant_name, wt_AA,respos, mutantfile,foldx_wt_score, evo_wt_score,intercaat_wt_scores, mutant_folder, qc, ic, mutantAA_3letter, pdb_file,wt_gbsa])
 
     
     # for each mutant run foldx, evoef and intercaat in parrelel
@@ -53,11 +52,11 @@ def main(pdb, pdb_file, qc, ic, config):
     with ProcessPoolExecutor() as exe:
         return_vals = exe.map(mutantEnergyScorer, jobs)
         for return_val in return_vals:
-            mutant_name, foldx, evoef, intercaat = return_val
-            results[mutant_name] = [foldx, evoef, intercaat]
+            mutant_name, foldx, evoef, intercaat, md_energy = return_val
+            results[mutant_name] = [foldx, evoef, intercaat, md_energy]
 
     # convert dict to dataframe 
-    df = pd.DataFrame.from_dict(results, orient='index', columns = ["DDG_foldx","DDG_evoef", "Dintercaat_normalized" ])
+    df = pd.DataFrame.from_dict(results, orient='index', columns = ["DDG_foldx","DDG_evoef", "Dintercaat_normalized", "DDG_GBSA" ])
     df.reset_index(inplace=True)
     df = df.rename(columns = {'index':'mutant'})
     print(df)
@@ -65,12 +64,13 @@ def main(pdb, pdb_file, qc, ic, config):
     return 
 
 def mutantEnergyScorer(params):
-    position, mutant_name, wt_AA, respos, mutantfile,foldx_wt_score, evo_wt_score,intercaat_wt_scores,  mutant_folder, qc, ic,mutant_AA, pdb_file  = params
+    position, mutant_name, wt_AA, respos, mutantfile,foldx_wt_score, evo_wt_score,intercaat_wt_scores, mutant_folder, qc, ic,mutant_AA, pdb_file , wt_gbsa = params
     evoef = EvoEF_run(mutantfile, qc, ic, evo_wt_score)
     mutant_pdb = mutantfile.split("/")[-1]
     foldx = Foldx_run(mutant_pdb, qc,ic, mutant_folder,foldx_wt_score)
     dintercaat = intercaatMutant(position, mutant_pdb, qc, ic, mutant_folder, intercaat_wt_scores, wt_AA, mutant_AA )
-    return mutant_name, foldx, evoef, dintercaat
+    md_energy = GBSA(mutantfile, qc, ic, wt_gbsa )
+    return mutant_name, foldx, evoef, dintercaat, md_energy
 
 def configManager(config, intercaat_result):
     amino_acids = ['V', 'I', 'L', 'E', 'Q', 'D', 'N', 'H', 'W', 'F', 'Y', 'R', 'K', 'S', 'T', 'M', 'A', 'G', 'P', 'C']
