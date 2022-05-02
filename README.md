@@ -45,6 +45,6 @@ If config.txt is empty all interface residues will be mutated.
 
 
 <p align="center">
-<img src="Media/DDG_GBSA.png"  width="400" height="400"/>
+<img src="Media/DDG_GBSA.png" />
 </p>
 
