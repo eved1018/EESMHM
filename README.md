@@ -42,3 +42,18 @@ If config.txt is empty all interface residues will be mutated.
 * `-pdb`: RCSB PDB id, if not provided you will be prompted to select one. If it is is in the curent working directory it will be used. Otherwise it will be downloaded from the RCSB.
 * `-qc`: Query chain to mutate.
 * `-ic`: Partner chain.
+
+
+
+<p align="center">
+<img src="Media/Picture1.png"  width="400" height="400"/>
+</p>
+<p align="center">
+<img src="Media/Picture1.png"  width="400" height="400"/>
+</p>
+
+
+<p align="center">
+<img src="Media/DDG_GBSA.png"  width="400" height="400"/>
+</p>
+
