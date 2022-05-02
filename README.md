@@ -44,15 +44,6 @@ If config.txt is empty all interface residues will be mutated.
 * `-ic`: Partner chain.
 
 
-
-<p align="center">
-<img src="Media/Picture1.png"  width="400" height="400"/>
-</p>
-<p align="center">
-<img src="Media/Picture1.png"  width="400" height="400"/>
-</p>
-
-
 <p align="center">
 <img src="Media/DDG_GBSA.png"  width="400" height="400"/>
 </p>
