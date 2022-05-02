@@ -1,0 +1,8 @@
+scipy
+numpy
+halo
+pandas
+plotly
+kaleido
+intercaat
+pyhull

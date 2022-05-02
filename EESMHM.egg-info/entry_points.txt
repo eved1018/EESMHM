@@ -1,0 +1,3 @@
+[console_scripts]
+EESMHM = EESMHM.main:EESMHM
+
