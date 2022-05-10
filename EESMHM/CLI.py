@@ -8,7 +8,7 @@ def cli():
     files = [i for i in os.listdir() if i.endswith(".pdb")]
     parser = argparse.ArgumentParser()
     parser.add_argument('-pdb',
-                        help=f"please choose an input file from {files} or add to input folder", default=None)
+                        help=f"please choose an input file from {files}", default=None)
     parser.add_argument('-qc', '--query_chain', help="please choose a query chain", default=None)
     parser.add_argument('-ic', '--interacting_chain',
                         help="please choose the interacting chain", default=None)
@@ -25,6 +25,8 @@ def cli():
     foldx = args.foldx
     evoef = args.evoef
     pdb, pdb_file = pdbManager(pdb, files)
+    os.makedirs(f"output/{pdb}/mutants/", exist_ok=True)
+    # os.makedirs(f"tmp/", exist_ok=True)
     if qc is None or ic is None:
         qc, ic, pdb_file = getChains(pdb_file)
     return pdb, pdb_file, qc, ic, config, foldx, evoef

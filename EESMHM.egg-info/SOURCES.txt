@@ -9,6 +9,7 @@ EESMHM/heatplot.py
 EESMHM/input_parser.py
 EESMHM/intercaatInterface.py
 EESMHM/main.py
+EESMHM/mainv2.py
 EESMHM/mutant_model.py
 EESMHM.egg-info/PKG-INFO
 EESMHM.egg-info/SOURCES.txt

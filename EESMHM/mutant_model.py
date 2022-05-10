@@ -2,7 +2,7 @@ import os
 from modeller import *
 from modeller.optimizers import MolecularDynamics, ConjugateGradients
 from modeller.automodel import autosched
-
+from .AminoAcidConverter import one_to_three
 #
 #  mutate_model.py
 #
@@ -164,4 +164,20 @@ def mutateModel(modelname, respos, restyp, chain,filename):
 #delete the temporary file
     os.remove(filename+ '.tmp')
     return filename
+
+def Mutate(params):
+    mutantAA, position, mutant_folder, pdb_file, qc = params
+    mutantAA_3letter = one_to_three(mutantAA)
+    # create mutant PDB
+    wt_AA , respos = position.split("_")
+    mutposition = respos + mutantAA
+    mutantfile =  mutant_folder + wt_AA + mutposition + ".pdb"
+    mutant_name = wt_AA + respos + mutantAA
+    try:
+        mutantfile = mutateModel(pdb_file, respos, mutantAA_3letter, qc, mutantfile)
+        rval = [position, mutant_name, wt_AA,respos, mutantfile,mutantAA_3letter]
+    except:
+        print(f"error performing mutation at {wt_AA}{mutposition}")
+        rval = [mutant_name]
+    return rval
 

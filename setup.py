@@ -6,7 +6,7 @@ if __name__ == '__main__':
         long_description = fh.read()
 
     setup(name='EESMHM',
-        version="1.5",
+        version="1.12",
         description="Energy Evaluation of Single Mutant Homology Models",
         url='https://github.com/eved1018/EESMHM',
         author='Evan Edelstein',
@@ -17,7 +17,6 @@ if __name__ == '__main__':
         install_requires=[
             'scipy',
             'numpy',
-            "halo",
             "pandas",
             "plotly",
             "kaleido",
@@ -26,7 +25,7 @@ if __name__ == '__main__':
         long_description=long_description,
         long_description_content_type='text/markdown',
         entry_points = {
-            'console_scripts': ['EESMHM=EESMHM.main:EESMHM'],
+            'console_scripts': ['EESMHM=EESMHM.mainv2:EESMHM'],
         })
 
 #python setup.py sdist

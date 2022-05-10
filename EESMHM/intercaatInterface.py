@@ -1,7 +1,7 @@
 from intercaat.intercaatWrapper import intercaat
-from halo import Halo
+# from halo import Halo
 
-@Halo(text='Loading', spinner='dots')
+# @Halo(text='Loading', spinner='dots')
 def intercaatWT(pdb_file, qc, ic):
     match,  interactions = intercaat(pdb_file, qc, ic)
     return interactions

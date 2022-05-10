@@ -13,19 +13,20 @@
 ```
 3. Download EvoEF (https://github.com/tommyhuangthu/EvoEF).
 
-4. Download foldx5 (https://foldxsuite.crg.eu/).
+4. Download Foldx (https://foldxsuite.crg.eu/).
 
 
 ### Configuration File:
 The config.txt is used to guide the mutagensis and is organzied in two parts
 
 part 1: paths
-`#foldx {foldx path}
- #evoef {evoef path}
-`
+```sh
+	#foldx {foldx path}
+	#evoef {evoef path}
+```
 
 part 2: mutation config:
-{`1 letter amino acid`} {`residue number}` {`comma seprated list of amino acids to mutate to or * for all`}
+`1 letter amino acid code` `residue number` `comma seprated list of amino acids to mutate to or * for all`
 
 If left empty all interface positions will be mutated.  
 
