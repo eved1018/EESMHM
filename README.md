@@ -6,9 +6,9 @@
 </p>
 
 ### Installation and Dependencies:
-1. Clone repo:
+1. Install:
 ```sh
-   git clone https://github.com/eved1018/EESMHM.git
+   pip install EESMHM
 ```
 2. Download Modeller: https://salilab.org/modeller/download_installation.html
     * for Conda enviroment:
@@ -16,32 +16,31 @@
         conda config --add channels salilab
         conda install modeller
 ```
-3. Download python dependencies:
-```sh
-    pip install -r requirements.txt 
-```
-4. Install and compile EvoEf1
-```sh
-    cd src/
-    git clone https://github.com/tommyhuangthu/EvoEF.git
-    cd EvoEF
-    g++ -O3 -ffast-math -o EvoEF src/*.cpp
-```
+3. Download EvoEF (https://github.com/tommyhuangthu/EvoEF).
 
-5. Download foldx (https://foldxsuite.crg.eu/) and move the executable and rotobase.txt to src/foldx folder.
+4. Download foldx (https://foldxsuite.crg.eu/).
 
 ### Configuration File:
-The config.txt is used to guide the mutagensis and is organzied in three space seperated columns:
-1) `1 letter amino acid` 
-2) `residue number`
-3) `comma seprated list of amino acids to mutate to or * for all`
+The config.txt is used to guide the mutations and is organzied in two parts
 
-If config.txt is empty all interface residues will be mutated.   
+part 1: paths
+```sh
+	#foldx {foldx path}
+	#evoef {evoef path}
+```
+
+part 2: mutation config:
+`1 letter amino acid code` `residue number` `comma seprated list of amino acids to mutate to or * for all`
+
+If left empty all interface positions will be mutated.  
 
 ### Command line Arguments:
-* `-pdb`: RCSB PDB id, if not provided you will be prompted to select one. If it is is in the curent working directory it will be used. Otherwise it will be downloaded from the RCSB.
+* `-pdb`: RCSB PDB id, if not provided you will be prompted to select one. If it is is in the current working directory it will be used. Otherwise it will be downloaded from the RCSB.
 * `-qc`: Query chain to mutate.
 * `-ic`: Partner chain.
+* `-config`: config file path
+* `-foldx`: foldx path
+* `-evoef`: Evoef path
 
 
 <p align="center">
